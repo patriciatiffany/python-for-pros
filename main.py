@@ -9,7 +9,7 @@ class TaskStatus(StrEnum):
     done = auto()
 
 
-def is_overdue(due_date, status):
+def is_overdue(due_date: date, status: TaskStatus) -> bool:
     if due_date is None:
         return False
     if (status != TaskStatus.done) and (due_date < date.today()):
