@@ -22,7 +22,7 @@ tasks = [
 open_titles = [task["title"] for task in tasks if not task["done"]]
 
 
-def validate_project_name(name):
+def validate_project_name(name: str):
     cleaned = name.strip()
     if not cleaned:
         raise ValueError("Project name cannot be blank.")
