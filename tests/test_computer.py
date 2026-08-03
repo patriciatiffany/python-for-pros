@@ -13,7 +13,7 @@ def test_computer_valid():
 
 def test_computer_rejects_string_ram():
     with pytest.raises(ValidationError):
-        Computer(brand="apple", ram_gb="16", hard_drive_gb=512)
+        Computer(brand="apple", ram_gb="sixteen", hard_drive_gb=512)
 
 
 def test_computer_requires_brand():
