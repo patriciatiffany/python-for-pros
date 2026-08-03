@@ -15,7 +15,9 @@ def test_list_projects_by_slug():
     # EXERCISE STEP 3:
     # Update this test to send `slug=api-v2` instead of `name=API v2`,
     # so it matches the new slug-based search endpoint.
-    response = client.get("/projects", params={"name": "API v2"})
+    # response = client.get("/projects", params={"name": "API v2"})
+
+    response = client.get("/projects", params={"slug": "api-v2"})
     assert response.status_code == 200
     data = response.json()
     assert len(data) == 1

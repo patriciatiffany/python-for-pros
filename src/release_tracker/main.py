@@ -22,6 +22,10 @@ mock_database: dict[int, ProjectRead] = {
 @app.get("/projects/{project_id}", response_model=ProjectRead)
 def get_project(project_id: int):
     project = mock_database.get(project_id)
+    if not project:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND, detail="Project not found"
+        )
     # EXERCISE STEP 1:
     # If `not project`, raise an HTTPException with status code
     # status.HTTP_404_NOT_FOUND and detail "Project not found".
@@ -31,7 +35,9 @@ def get_project(project_id: int):
 @app.get("/projects", response_model=list[ProjectRead])
 def list_projects(slug: str | None = None):
     projects = list(mock_database.values())
+    if slug is None:
+        return projects
     # EXERCISE STEP 2:
     # If slug is None, return all projects.
     # Otherwise, return only the projects whose `slug` attribute equals the given slug.
-    return projects
+    return [project for project in projects if project.slug == slug]
