@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, ValidationError
 
 
 class Computer(BaseModel):
@@ -9,3 +9,9 @@ class Computer(BaseModel):
 
 laptop = Computer(brand="apple", ram_gb=16, hard_drive_gb=512)
 print(laptop)
+
+
+try:
+    bad = Computer(brand="apple", ram_gb="thirty two", hard_drive_gb=512)
+except ValidationError as e:
+    print(e)
