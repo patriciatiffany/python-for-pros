@@ -7,11 +7,11 @@ class Computer(BaseModel):
     hard_drive_gb: int
 
 
-laptop = Computer(brand="apple", ram_gb=16, hard_drive_gb=512)
-print(laptop)
+if __name__ == "__main__":
+    laptop = Computer(brand="apple", ram_gb=16, hard_drive_gb=512)
+    print(laptop)
 
-
-try:
-    bad = Computer(brand="apple", ram_gb="thirty two", hard_drive_gb=512)
-except ValidationError as e:
-    print(e)
+    try:
+        bad = Computer(brand="apple", ram_gb="thirty two", hard_drive_gb=512)
+    except ValidationError as e:
+        print(e)
