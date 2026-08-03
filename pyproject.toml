@@ -7,10 +7,9 @@ authors = [
     { name = "patriciatiffany", email = "patricia.angkiriwang@alumni.ubc.ca" }
 ]
 requires-python = "==3.14.*"
-dependencies = []
-
-[project.scripts]
-release-tracker = "release_tracker:main"
+dependencies = [
+    "fastapi[standard]>=0.115.0",
+]
 
 [build-system]
 requires = ["uv_build>=0.12.0,<0.13.0"]
