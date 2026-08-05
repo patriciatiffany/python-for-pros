@@ -9,10 +9,14 @@ def seed() -> None:
     with Session(get_engine()) as session:
         # 2. Instantiate three Project objects
         frontend = Project(name="Frontend Redesign", slug="frontend-redesign")
+        api = Project(name="API v2", slug="api-v2")
+        backend = Project(name="Database Migration", slug="databse-migration")
         # TODO: Create two more projects
 
         # 3. Add them to the session
         session.add(frontend)
+        session.add(api)
+        session.add(backend)
         # TODO: Add the other two projects
 
         # 4. Commit the transaction to save them to the database
